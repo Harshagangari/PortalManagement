@@ -1,0 +1,62 @@
+﻿
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card ">
+                <div class="card-body">
+                   
+                    <div>
+                        <table class="table border-danger justify-content-center">
+                            <tr class="table-danger">
+                                <td><strong>User</strong></td>
+                                <td>@ViewBag.details.Name</td>
+                            </tr>
+                            <tr class="table-light">
+                                <td><strong>Date Of Birth</strong></td>
+                                <td>@ViewBag.details.Dob</td>
+                            </tr>
+                            <tr class="table-danger">
+                                <td><strong>Aadhaar Number</strong></td>
+                                <td>@ViewBag.details.aadharNo</td>
+                            </tr>
+                            <tr class="table-light">
+                                <td><strong>PAN</strong></td>
+                                <td>@ViewBag.details.Pan</td>
+                            </tr>
+                            <tr class="table-danger">
+                                <td><strong>PensionType</strong></td>
+                                @if (ViewBag.details.pensiontype == 0)
+                                {
+                                    <td>self</td>
+                                }
+                                else
+                                {
+                                    <td>family</td>
+                                }
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Your pension amount will reflect here after validation</h4>
+                    <h2>@ViewBag.result</h2>
+                    <br />
+                    @ViewBag.pension
+                    @Html.ActionLink("Go Back", "Create", "PensionDetails")
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

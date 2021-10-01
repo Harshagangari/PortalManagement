@@ -1,0 +1,147 @@
+﻿@model PortalManagement.Entities.PensionDetails
+        @using PortalManagement.Entities
+
+        @{
+            ViewData["Title"] = "Create";
+        }
+
+<head>
+    <link href="~/css/Style.css" rel="stylesheet" />
+    @*<link href="@Url.Content("~/css/Style.css")" rel="stylesheet" type="text/css" />*@
+
+</head>
+    <div class="container">
+        <div class="inputbg text-center">
+            <h4>Request Your Pension</h4>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-5">
+                <form asp-action="Display" onsubmit="PensionDetails/Display" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="inputtextstyle label">
+                        <div class="form-group">
+                            <label asp-for="AadharNo" class="control-label">Aadhar Number</label>
+                            <input asp-for="AadharNo" class="form-control" required="true" placeholder="123456789" />
+                            <span asp-validation-for="AadharNo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputtextstyle label">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Name</label>
+                            <input asp-for="Name" class="form-control" required="true" placeholder="Pampachek" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputtextstyle label">
+                        <div class="form-group">
+                            <label asp-for="DateOfBirth" class="control-label">Date Of Birth</label>
+                            <input asp-for="DateOfBirth" class="form-control" asp-format="{0:yyyy-MM-dd}" type="date" data-val="true" required="true" placeholder="10/10/1920" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputtextstyle label">
+                        <div class="form-group">
+                            <label asp-for="PAN" class="control-label">PAN</label>
+                            <input asp-for="PAN" class="form-control" required="true" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" />
+                            <span asp-validation-for="PAN" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputtextstyle label">
+                        <div class="form-group">
+                            <label asp-for="pensionType" class="control-label">Pension Type</label>
+                            <select asp-for="pensionType" class="form-control" asp-items="Html.GetEnumSelectList<PensionDetails.PensionType>() " required="true"></select>
+                            <span asp-validation-for="pensionType" class="text-danger l"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center p-2">
+                        <input type="submit" value="Request" class="btn btn-color" />
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-1 col-md-1"></div>
+        </div>
+
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+
+
+    @*@model PortalManagement.Entities.PensionDetails
+@using PortalManagement.Entities
+
+@{ ViewData["Title"] = "Create"; }
+
+
+
+
+<h4>Request Your Pension</h4>
+<hr />
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col-md-5 col-lg-5">
+            <form asp-action="Display" onsubmit="PensionDetails/Display" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="AadharNo" class="control-label">Aadhar Number</label>
+                    <input asp-for="AadharNo" class="form-control" required="true" maxlength="12" min="12" pattern="[0-9]{4}[0-9]{4}[0-9]{4}" />
+                    <span asp-validation-for="AadharNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" required="true" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="control-label">Date Of Birth</label>
+                    <input asp-for="DateOfBirth" class="form-control" asp-format="{0:yyyy-MM-dd}" type="date" data-val="true" required="true" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PAN" class="control-label">PAN</label>
+                    <input asp-for="PAN" class="form-control" required="true" />
+                    <span asp-validation-for="PAN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <label asp-for="pensionType" class="control-label">Pension Type</label>
+                    <select asp-for="pensionType" class="form-control" asp-items="Html.GetEnumSelectList<PensionDetails.PensionType>() " required="true"></select>
+                    <span asp-validation-for="pensionType" class="text-danger l"></span>
+                </div>
+                <div class="form-group justify-content-center">
+                    <input type="submit" value="Request" class="btn btn-primary bg-success" />
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-5 text-danger border-danger ">
+            @ViewBag.wrongPan
+        </div>
+
+    </div>
+
+
+</div>
+     </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
